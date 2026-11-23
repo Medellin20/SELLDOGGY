@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { Heart, ShieldCheck, Truck, BadgeCheck, Mail, MapPin, Menu, X, ArrowUpRight } from 'lucide-react';
+import { Heart, ShieldCheck, BadgeCheck, Mail, MapPin, Menu, X, ArrowUpRight, Phone } from 'lucide-react';
 import { BrandLogo, brandName } from '@/components/Brand';
 
 const NAV = [
   { label: 'Accueil', href: '#accueil' },
   { label: 'Catalogue', href: '#catalogue' },
-  { label: 'Nos engagements', href: '#engagements' },
+  { label: 'Services', href: '#services' },
+  { label: 'Livraison', href: '#livraison' },
   { label: 'Contact', href: '#contact' },
 ];
 
@@ -19,13 +20,13 @@ export function Navbar() {
             <BrandLogo className="h-14 w-14 shrink-0 object-contain" />
             <span className="font-bold text-sm sm:text-base text-neutral-900 tracking-tight">{brandName}</span>
           </a>
-          <nav className="hidden lg:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-6">
             {NAV.map((item) => (
               <a key={item.href} href={item.href} className="text-sm font-medium text-neutral-600 hover:text-amber-600 transition-colors">
                 {item.label}
               </a>
             ))}
-            <a href="#catalogue" className="text-sm font-semibold bg-amber-500 hover:bg-amber-600 text-white px-4 py-2 rounded-full transition-colors">
+            <a href="#catalogue" className="store-cta text-sm font-semibold px-4 py-2 rounded-full">
               Voir les chiens
             </a>
           </nav>
@@ -56,21 +57,29 @@ export function Footer() {
             <BrandLogo className="h-14 w-14 shrink-0 object-contain" />
             <span className="font-bold text-lg text-white">{brandName}</span>
           </div>
-          <p className="text-sm leading-relaxed text-neutral-400">
-            Élevage de chiens de race au Bénin : Boebull, Malinois, Labrador, Cane Corso et bien plus.
-            Nos chiots sont vaccinés, pucés et élevés en famille.
+          <p className="text-sm leading-relaxed text-neutral-400">L’excellence au service de la fidélité.</p>
+        </div>
+        <div className="space-y-3 text-sm">
+          <h2 className="font-semibold text-white mb-4">Nous contacter</h2>
+          <a className="flex items-center gap-3 hover:text-amber-200" href="tel:+22991376946">
+            <Phone aria-hidden="true" className="w-4 h-4 shrink-0 text-amber-400" /> +229 91 37 69 46
+          </a>
+          <a className="flex items-center gap-3 hover:text-amber-200" href="tel:+2290144427472">
+            <Phone aria-hidden="true" className="w-4 h-4 shrink-0 text-amber-400" /> +229 01 44 42 74 72
+          </a>
+          <a className="flex items-center gap-3 break-all hover:text-amber-200" href="mailto:pawlovershallway@gmail.com">
+            <Mail aria-hidden="true" className="w-4 h-4 shrink-0 text-amber-400" /> pawlovershallway@gmail.com
+          </a>
+          <p className="flex items-center gap-3">
+            <MapPin aria-hidden="true" className="w-4 h-4 shrink-0 text-amber-400" /> Cotonou, Bénin
           </p>
         </div>
         <div className="space-y-3 text-sm">
-          <h3 className="font-semibold text-white mb-4">Contact</h3>
-          <p className="flex items-center gap-3"><Mail className="w-4 h-4 text-amber-500" /> contact@kannele-dogs.fr</p>
-          <p className="flex items-center gap-3"><MapPin className="w-4 h-4 text-amber-500" /> Bénin</p>
-        </div>
-        <div className="space-y-3 text-sm">
-          <h3 className="font-semibold text-white mb-4">Horaires</h3>
-          <p>Lundi – Vendredi : 9h – 18h</p>
-          <p>Samedi : 10h – 17h</p>
-          <p>Dimanche : sur rendez-vous</p>
+          <h2 className="font-semibold text-white mb-4">Suivez-nous</h2>
+          <p>Instagram · Paw lovers hallway</p>
+          <a className="inline-block hover:text-amber-200" href="https://www.facebook.com/pawlovershallway">
+            Facebook · @pawlovershallway
+          </a>
         </div>
       </div>
       <div className="border-t border-neutral-800 py-5 text-center text-xs text-neutral-400">
@@ -86,14 +95,13 @@ export function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-10 px-4 py-14 sm:px-6 lg:grid-cols-2 lg:gap-16 lg:px-8 lg:py-24">
         <div className="hero-copy">
           <p className="mb-5 flex items-center gap-2 text-sm font-semibold text-amber-200">
-            <MapPin aria-hidden="true" className="h-4 w-4" /> Élevage au Bénin
+            ÉLEVAGE CANIN D’EXCEPTION
           </p>
           <h1 className="store-heading mb-6 text-[clamp(2.6rem,6vw,5.5rem)] leading-[1.02]">
-            Trouvez le compagnon <em>qui vous ressemble.</em>
+            L’EXCELLENCE <em>au service de la fidélité.</em>
           </h1>
           <p className="mb-8 max-w-md text-base leading-relaxed text-stone-300 sm:text-lg">
-            Boebull, Malinois, Labrador, Cane Corso… Découvrez nos chiots de race,
-            vaccinés et prêts à rejoindre votre famille.
+            Nous élevons et sélectionnons des chiens de prestige, alliant beauté, équilibre et lignées contrôlées, pour des familles exigeantes.
           </p>
           <div className="flex flex-wrap items-center gap-3 sm:gap-5">
             <a href="#catalogue" className="store-cta inline-flex items-center gap-2 rounded-full px-5 py-3 text-sm font-bold sm:px-7">
@@ -120,8 +128,8 @@ export function Hero() {
               <ShieldCheck aria-hidden="true" className="h-5 w-5 text-emerald-700" />
             </span>
             <div>
-              <p className="text-sm font-bold">Chiots vaccinés et pucés</p>
-              <p className="text-xs text-stone-600">Suivi vétérinaire</p>
+              <p className="text-sm font-bold">Fidélité – Qualité – Excellence</p>
+              <p className="text-xs text-stone-600">Cotonou, Bénin</p>
             </div>
           </div>
         </div>
@@ -131,10 +139,9 @@ export function Hero() {
 }
 
 const ENGAGEMENTS = [
-  { icon: ShieldCheck, title: 'Santé garantie', text: 'Chaque chiot est vacciné, vermifugé et suivi par un vétérinaire partenaire.' },
-  { icon: Heart, title: 'Élevage en famille', text: 'Nos chiots grandissent au contact des humains, dans un environnement sain.' },
-  { icon: BadgeCheck, title: 'Papiers inclus', text: 'Pedigree et carnet de santé fournis pour chaque adoption.' },
-  { icon: Truck, title: 'Livraison possible', text: 'Remise en main propre ou transport sécurisé au Bénin.' },
+  { icon: Heart, title: 'Fidélité & caractère', text: 'Chiens équilibrés et sociables, élevés avec amour.' },
+  { icon: BadgeCheck, title: 'Lignées prestigieuses', text: 'Sélection rigoureuse pour des races d’exception.' },
+  { icon: ShieldCheck, title: 'Suivi & conseils', text: 'Accompagnement vétérinaire et conseils personnalisés.' },
 ];
 
 export function Engagements() {
@@ -142,9 +149,8 @@ export function Engagements() {
     <section id="engagements" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div className="text-center mb-12">
         <h2 className="store-heading text-4xl text-neutral-900 sm:text-5xl">Nos engagements</h2>
-        <p className="text-neutral-500 mt-3">Parce qu’adopter un chien est une grande décision, nous vous accompagnons.</p>
       </div>
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-3">
         {ENGAGEMENTS.map(({ icon: Icon, title, text }) => (
           <div key={title} className="store-card rounded-2xl p-6">
             <span className="w-12 h-12 rounded-xl bg-amber-50 flex items-center justify-center mb-4">

@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useDogs } from '@/hooks/useDogs';
 import { Catalog } from '@/components/Catalog';
 import { Navbar, Hero, Engagements, Footer } from '@/components/Layout';
+import { StoreInformation } from '@/components/StoreInformation';
 import { OrderModal } from '@/components/OrderModal';
 import type { Dog, OrderType } from '@/lib/supabase';
 
@@ -18,9 +19,12 @@ export default function Home() {
   return (
     <div className="storefront min-h-screen">
       <Navbar />
-      <Hero />
-      <Catalog dogs={dogs} loading={loading} error={error} onOrder={openOrder} />
-      <Engagements />
+      <main>
+        <Hero />
+        <Catalog dogs={dogs} loading={loading} error={error} onOrder={openOrder} />
+        <Engagements />
+        <StoreInformation />
+      </main>
       <Footer />
       {orderDog && (
         <OrderModal dog={orderDog} defaultType={orderType} onClose={() => setOrderDog(null)} />
