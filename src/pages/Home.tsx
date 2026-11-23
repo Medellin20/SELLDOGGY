@@ -16,7 +16,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-neutral-50">
+    <div className="storefront min-h-screen">
       <Navbar />
       <Hero />
       <Catalog dogs={dogs} loading={loading} error={error} onOrder={openOrder} />

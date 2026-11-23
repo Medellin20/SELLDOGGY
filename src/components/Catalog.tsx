@@ -34,26 +34,27 @@ export function Catalog({ dogs, loading, error, onOrder }: Props) {
   return (
     <section id="catalogue" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div className="text-center mb-10">
-        <h2 className="text-3xl font-bold text-neutral-900">Notre catalogue</h2>
+        <h2 className="store-heading text-4xl text-neutral-900 sm:text-5xl">Notre catalogue</h2>
         <p className="text-neutral-500 mt-3">Tous nos chiots disponibles à l'adoption ou à la réservation.</p>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-3 mb-10">
+      <div className="store-filters flex flex-col gap-3 rounded-3xl p-3 mb-10 md:flex-row">
         <div className="relative flex-1">
           <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
           <input
+            aria-label="Rechercher un nom ou une race"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Rechercher un nom ou une race…"
             className="w-full border border-neutral-300 rounded-full pl-11 pr-4 py-2.5 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none"
           />
         </div>
-        <select value={breed} onChange={(e) => setBreed(e.target.value)}
+        <select aria-label="Filtrer par race" value={breed} onChange={(e) => setBreed(e.target.value)}
           className="border border-neutral-300 rounded-full px-4 py-2.5 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none bg-white">
           <option value="all">Toutes les races</option>
           {breeds.map((b) => <option key={b} value={b}>{b}</option>)}
         </select>
-        <select value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}
+        <select aria-label="Filtrer par statut" value={statusFilter} onChange={(e) => setStatusFilter(e.target.value)}
           className="border border-neutral-300 rounded-full px-4 py-2.5 text-sm focus:ring-2 focus:ring-amber-500 focus:border-amber-500 outline-none bg-white">
           <option value="all">Tous les statuts</option>
           <option value="available">Disponibles</option>
@@ -95,10 +96,10 @@ function DogCard({ dog, onOrder }: { dog: Dog; onOrder: Props['onOrder'] }) {
   const canOrder = dog.status === 'available';
 
   return (
-    <article className="group bg-white rounded-3xl border border-neutral-200 overflow-hidden hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+    <article className="group store-card rounded-3xl overflow-hidden">
       <div className="relative h-56 overflow-hidden">
         {dog.image_url ? (
-          <img src={dog.image_url} alt={dog.name} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+          <img src={dog.image_url} alt={dog.name} loading="lazy" decoding="async" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
         ) : (
           <div className="w-full h-full bg-neutral-100 flex items-center justify-center text-neutral-400 text-sm">Sans photo</div>
         )}
@@ -114,7 +115,7 @@ function DogCard({ dog, onOrder }: { dog: Dog; onOrder: Props['onOrder'] }) {
       <div className="p-5">
         <div className="flex items-start justify-between mb-1">
           <h3 className="text-lg font-bold text-neutral-900">{dog.name}</h3>
-          <p className="text-lg font-bold text-amber-600">{formatPrice(dog.price)}</p>
+          <p className="text-lg font-bold text-amber-800">{formatPrice(dog.price)}</p>
         </div>
         <p className="text-sm text-neutral-500 flex items-center gap-3 mb-3">
           <span>{dog.breed}</span>
@@ -128,14 +129,14 @@ function DogCard({ dog, onOrder }: { dog: Dog; onOrder: Props['onOrder'] }) {
           <button
             onClick={() => onOrder(dog, 'purchase')}
             disabled={!canOrder}
-            className="flex-1 bg-amber-500 hover:bg-amber-600 disabled:opacity-40 disabled:cursor-not-allowed text-white text-sm font-semibold py-2.5 rounded-full transition-colors flex items-center justify-center gap-2"
+            className="store-cta flex-1 disabled:opacity-40 disabled:cursor-not-allowed text-sm font-semibold py-2.5 rounded-full transition-colors flex items-center justify-center gap-2"
           >
             <ShoppingBag className="w-4 h-4" /> Acheter
           </button>
           <button
             onClick={() => onOrder(dog, 'reservation')}
             disabled={!canOrder}
-            className="flex-1 border border-amber-500 text-amber-600 hover:bg-amber-50 disabled:opacity-40 disabled:cursor-not-allowed text-sm font-semibold py-2.5 rounded-full transition-colors flex items-center justify-center gap-2"
+            className="flex-1 border border-amber-600 text-amber-800 hover:bg-amber-50 disabled:opacity-40 disabled:cursor-not-allowed text-sm font-semibold py-2.5 rounded-full transition-colors flex items-center justify-center gap-2"
           >
             <CalendarClock className="w-4 h-4" /> Réserver
           </button>

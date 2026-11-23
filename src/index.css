@@ -1,3 +1,118 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.storefront {
+  background: #f8f4eb;
+  color: #292019;
+}
+
+.storefront section[id],
+.storefront footer[id] {
+  scroll-margin-top: 4.25rem;
+}
+
+.store-header {
+  background: rgb(252 249 242 / 95%);
+  border-color: #e9dfcb;
+}
+
+.store-hero,
+.store-footer {
+  background: radial-gradient(ellipse at 85% 12%, #49331d, transparent 56%), #211912;
+}
+
+.store-heading {
+  font-family: Georgia, 'Times New Roman', serif;
+  letter-spacing: -0.045em;
+}
+
+.store-heading em {
+  display: block;
+  color: #edcb88;
+}
+
+.store-cta {
+  background: #dcb36b;
+  color: #24190d;
+  transition: background-color 180ms ease, box-shadow 180ms ease;
+}
+
+.store-cta:hover:not(:disabled) {
+  background: #f2cb84;
+  box-shadow: 0 5px 20px rgb(145 99 32 / 20%);
+}
+
+.hero-frame {
+  padding: 5px;
+  background: linear-gradient(145deg, #eaca8e, #594127);
+  box-shadow: 0 26px 70px rgb(0 0 0 / 35%);
+}
+
+.hero-frame img {
+  border-radius: calc(2rem - 5px);
+}
+
+.hero-note {
+  background: #fdf7ea;
+  box-shadow: 0 8px 30px rgb(33 25 18 / 24%);
+}
+
+.store-card,
+.store-filters {
+  background: #fffdfa;
+  border: 1px solid #eaddc8;
+  box-shadow: 0 6px 24px rgb(68 44 12 / 5%);
+}
+
+.store-card {
+  transition: transform 240ms ease, box-shadow 240ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .store-card:hover {
+    box-shadow: 0 14px 32px rgb(68 44 12 / 13%);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html:has(.storefront) {
+    scroll-behavior: smooth;
+  }
+
+  .hero-copy {
+    animation: store-enter 640ms ease-out both;
+  }
+
+  .hero-visual {
+    animation: store-enter 780ms 80ms ease-out both;
+  }
+
+  .hero-note {
+    animation: store-enter 500ms 300ms ease-out both;
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .store-card:hover {
+      transform: translateY(-5px);
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .storefront *,
+  .storefront *::before,
+  .storefront *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .store-card img {
+    transform: none !important;
+  }
+}
+
+@keyframes store-enter {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
