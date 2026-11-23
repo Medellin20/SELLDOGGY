@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Lock, Mail, Loader2, AlertCircle, Dog } from 'lucide-react';
+import { Lock, Mail, Loader2, AlertCircle } from 'lucide-react';
+import { BrandLogo, brandName } from '@/components/Brand';
 import { supabase } from '@/lib/supabase';
 
 export default function AdminLogin() {
@@ -27,9 +28,8 @@ export default function AdminLogin() {
     <div className="min-h-screen bg-neutral-950 flex items-center justify-center px-4">
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
-          <span className="inline-flex w-14 h-14 rounded-2xl bg-amber-500 items-center justify-center mb-4">
-            <Dog className="w-7 h-7 text-white" />
-          </span>
+          <BrandLogo className="mx-auto h-24 w-24 object-contain" />
+          <p className="mb-2 text-sm font-semibold text-amber-400">{brandName}</p>
           <h1 className="text-2xl font-bold text-white">Espace administration</h1>
           <p className="text-neutral-400 text-sm mt-2">Connectez-vous pour gérer le catalogue et les commandes.</p>
         </div>

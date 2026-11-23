@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Plus, Pencil, Trash2, LogOut, Dog as DogIcon, ClipboardList, LayoutGrid, Loader2, RefreshCw } from 'lucide-react';
+import { BrandLogo, brandName } from '@/components/Brand';
 import { supabase, formatPrice, type Dog, type DogInput, type Order } from '@/lib/supabase';
 import { DogForm } from '@/components/DogForm';
 
@@ -81,10 +82,11 @@ export default function AdminDashboard() {
       <header className="bg-white border-b border-neutral-200 sticky top-0 z-30">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="w-9 h-9 rounded-full bg-amber-500 flex items-center justify-center">
-              <DogIcon className="w-5 h-5 text-white" />
-            </span>
-            <span className="font-bold text-neutral-900">Administration</span>
+            <BrandLogo className="h-12 w-12 shrink-0 object-contain" />
+            <div>
+              <p className="text-sm font-bold leading-tight text-neutral-900">{brandName}</p>
+              <p className="text-xs text-neutral-600">Administration</p>
+            </div>
           </div>
           <div className="flex items-center gap-3">
             <Link to="/" className="text-sm text-neutral-600 hover:text-amber-600 transition-colors hidden sm:block">

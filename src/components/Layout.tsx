@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Heart, ShieldCheck, Truck, BadgeCheck, Phone, Mail, MapPin, Menu, X, Dog } from 'lucide-react';
+import { Heart, ShieldCheck, Truck, BadgeCheck, Phone, Mail, MapPin, Menu, X } from 'lucide-react';
+import { BrandLogo, brandName } from '@/components/Brand';
 
 const NAV = [
   { label: 'Accueil', href: '#accueil' },
@@ -15,12 +16,10 @@ export function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <a href="#accueil" className="flex items-center gap-2">
-            <span className="w-9 h-9 rounded-full bg-amber-500 flex items-center justify-center">
-              <Dog className="w-5 h-5 text-white" />
-            </span>
-            <span className="font-bold text-lg text-neutral-900 tracking-tight">Kannelé Dogs</span>
+            <BrandLogo className="h-14 w-14 shrink-0 object-contain" />
+            <span className="font-bold text-sm sm:text-base text-neutral-900 tracking-tight">{brandName}</span>
           </a>
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden lg:flex items-center gap-8">
             {NAV.map((item) => (
               <a key={item.href} href={item.href} className="text-sm font-medium text-neutral-600 hover:text-amber-600 transition-colors">
                 {item.label}
@@ -30,13 +29,13 @@ export function Navbar() {
               Voir les chiens
             </a>
           </nav>
-          <button className="md:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menu">
+          <button className="lg:hidden p-2" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
       {open && (
-        <nav className="md:hidden border-t border-neutral-200 bg-white px-4 pb-4 pt-2 space-y-1">
+        <nav className="lg:hidden border-t border-neutral-200 bg-white px-4 pb-4 pt-2 space-y-1">
           {NAV.map((item) => (
             <a key={item.href} href={item.href} onClick={() => setOpen(false)} className="block px-3 py-2 rounded-lg text-neutral-700 hover:bg-neutral-100">
               {item.label}
@@ -54,10 +53,8 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid gap-10 md:grid-cols-3">
         <div>
           <div className="flex items-center gap-2 mb-4">
-            <span className="w-9 h-9 rounded-full bg-amber-500 flex items-center justify-center">
-              <Dog className="w-5 h-5 text-white" />
-            </span>
-            <span className="font-bold text-lg text-white">Kannelé Dogs</span>
+            <BrandLogo className="h-14 w-14 shrink-0 object-contain" />
+            <span className="font-bold text-lg text-white">{brandName}</span>
           </div>
           <p className="text-sm leading-relaxed text-neutral-400">
             Élevage passionné de chiens de race : Boebull, Malinois, Labrador, Cane Corso et bien plus.
@@ -78,7 +75,7 @@ export function Footer() {
         </div>
       </div>
       <div className="border-t border-neutral-800 py-5 text-center text-xs text-neutral-500">
-        © {new Date().getFullYear()} Kannelé Dogs — Tous droits réservés
+        © {new Date().getFullYear()} {brandName} — Tous droits réservés
       </div>
     </footer>
   );
