@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Heart, ShieldCheck, BadgeCheck, Mail, MapPin, Menu, X, ArrowUpRight, Phone } from 'lucide-react';
+import { Heart, ShieldCheck, BadgeCheck, Mail, MapPin, Menu, X, ArrowUpRight, Phone, Instagram, Facebook } from 'lucide-react';
 import { BrandLogo, brandName } from '@/components/Brand';
 
 const NAV = [
@@ -76,8 +76,12 @@ export function Footer() {
         </div>
         <div className="space-y-3 text-sm">
           <h2 className="font-semibold text-white mb-4">Suivez-nous</h2>
-          <p>Instagram · Paw lovers hallway</p>
-          <a className="inline-block hover:text-amber-200" href="https://www.facebook.com/pawlovershallway">
+          <p className="flex items-center gap-3">
+            <Instagram aria-hidden="true" className="h-4 w-4 shrink-0 text-amber-400" />
+            Instagram · Paw lovers hallway
+          </p>
+          <a className="inline-flex items-center gap-3 hover:text-amber-200" href="https://www.facebook.com/pawlovershallway">
+            <Facebook aria-hidden="true" className="h-4 w-4 shrink-0 text-amber-400" />
             Facebook · @pawlovershallway
           </a>
         </div>
